@@ -84,58 +84,66 @@
             text-align: center;
             padding: 10px;
         }
-        /* Draggable Payment GUI */
-        #paymentModal {
+        /* Studio Section Styles */
+        #studio {
             display: none;
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #444;
-            border-radius: 10px;
-            padding: 20px;
-            color: white;
-            width: 450px;
-            height: 500px; /* Increased the height */
-            cursor: move;
+            position: relative;
+            height: 500px; /* Adjust height as needed */
         }
-        #paymentModal h2 {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        #closePayment {
-            color: white;
-            background-color: #ff4d4d;
-            padding: 5px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            float: right;
-        }
-        .payment-options {
+        .studio-container {
             display: flex;
-            justify-content: space-around;
-            margin-bottom: 30px;
+            height: 100%;
         }
-        .payment-options img {
-            width: 80px;
-            height: 80px;
-        }
-        #purchaseBtn {
-            background-color: #28a745;
+        .ai-sidebar {
+            background-color: #333;
+            width: 250px; /* Adjust width as needed */
+            padding: 20px;
+            border-radius: 10px 0 0 10px;
             color: white;
-            padding: 15px;
+        }
+        .ai-sidebar img {
+            width: 50px; /* Adjust size as needed */
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .ai-message {
+            margin-bottom: 20px;
+        }
+        .code-area {
+            flex-grow: 1;
+            background-color: #222;
+            border-radius: 0 10px 10px 0;
+            padding: 20px;
+            position: relative;
+        }
+        .avalon-textbox {
+            width: 100%;
+            height: 80%;
+            border-radius: 10px;
+            background-color: #444;
+            color: white;
+            padding: 10px;
+            font-family: monospace;
+        }
+        .send-container {
+            display: flex;
+            margin-top: 10px;
+        }
+        .send-container input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
             border-radius: 5px;
             border: none;
-            cursor: pointer;
-            display: block;
-            width: 100%;
-            font-size: 16px;
-            text-align: center;
+            margin-right: 10px;
         }
-        .payment-description {
-            margin-bottom: 30px;
-            text-align: center;
+        .send-container button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -146,8 +154,8 @@
     <nav>
         <ul>
             <li><a href="#" onclick="showTab('exploits')">Exploits</a></li>
+            <li><a href="#" onclick="showTab('studio')">Studio</a></li>
             <li><a href="https://discord.gg/nn9r4TBwaT" target="_blank">Discord</a></li>
-            <li><a href="#" onclick="openPayment()">Payments</a></li>
         </ul>
     </nav>
 </header>
@@ -160,87 +168,121 @@
             <img src="https://i.ytimg.com/vi/mQo_DsvgqFQ/maxresdefault.jpg" alt="Wave Executor">
             <h3>Wave</h3>
             <p>Wave is a level 8 100% UNC executor.</p>
-            <a href="https://rekonise.com/get-wave-ydy87" target="_blank" class="btn">Get Exploit</a> <!-- Updated Button -->
+            <a href="https://rekonise.com/get-wave-ydy87" target="_blank" class="btn">Get Exploit</a>
         </div>
-
         <div class="box">
             <img src="https://th.bing.com/th/id/OIP.mfLAoSh9o6mIekNJzqif1QHaEK?rs=1&pid=ImgDetMain" alt="Solara Exploit">
             <h3>Solara</h3>
             <p>Solara is a level 3 67% UNC exploit.</p>
-            <a href="https://rekonise.com/get-solara-53qua" target="_blank" class="btn">Get Exploit</a> <!-- Solara Button -->
+            <a href="https://rekonise.com/get-solara-53qua" target="_blank" class="btn">Get Exploit</a>
         </div>
-
         <div class="box">
             <img src="https://i.ytimg.com/vi/9PQKaAZfsQM/maxresdefault.jpg" alt="Celery Exploit">
             <h3>Celery</h3>
             <p>Celery is a level 3 74% UNC exploit.</p>
-            <a href="https://rekonise.com/get-celery-zbe7h" target="_blank" class="btn">Get Exploit</a> <!-- Celery Button -->
+            <a href="https://rekonise.com/get-celery-zbe7h" target="_blank" class="btn">Get Exploit</a>
         </div>
+        <div class="box">
+            <img src="https://i.ytimg.com/vi/Z-74vqEsoBE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgYShDMA8=&rs=AOn4CLBG8-hmusmPcyP_S8LVGcY1VAszaw" alt="Nyx Exploit">
+            <h3>Nyx</h3>
+            <p>Nyx is a level 3 73-75% UNC exploit.</p>
+            <a href="https://rekonise.com/get-nyx-xw8th" target="_blank" class="btn">Get Exploit</a>
+        </div>
+        <div class="box">
+            <img src="https://i.ytimg.com/vi/Zs98cc6XWCE/maxresdefault.jpg" alt="Electron V3 Exploit">
+            <h3>Electron V3</h3>
+            <p>Electron V3 is a level 7 91% UNC exploit.</p>
+            <a href="https://rekonise.com/get-electron-v3-czg5y" target="_blank" class="btn">Get Exploit</a>
+        </div>
+        <div class="box">
+            <img src="https://i.ytimg.com/vi/cdaHizGbHtU/maxresdefault.jpg" alt="Synapse Z Exploit">
+            <h3>Synapse Z</h3>
+            <p>Synapse Z is a level 8 100% UNC exploit.</p>
+            <a href="https://rekonise.com/get-synapse-z-kmswq" target="_blank" class="btn">Get Exploit</a>
+        </div>
+        <!-- New Options Added Here -->
+        <div class="box">
+            <img src="https://th.bing.com/th/id/OIP.3Y-ld-tBn0bWvjBMsqv6TwHaEN?rs=1&pid=ImgDetMain" alt="Codex Exploit">
+            <h3>Codex</h3>
+            <p>Codex is a level 7 99% UNC Android exploit.</p>
+            <a href="#" class="btn">Get Exploit</a>
+        </div>
+        <div class="box">
+            <img src="https://sakpot.com/wp-content/uploads/2024/03/e-1536x914.png" alt="Evon Exploit">
+            <h3>Evon</h3>
+            <p>Evon is a level 4 96% UNC Android exploit.</p>
+            <a href="#" class="btn">Get Exploit</a>
+        </div>
+        <div class="box">
+            <img src="https://i.ytimg.com/vi/Ah9epwFXGxY/maxresdefault.jpg" alt="Hydrogen Exploit">
+            <h3>Hydrogen</h3>
+            <p>Hydrogen is a level 5 95% UNC Android exploit.</p>
+            <a href="#" class="btn">Get Exploit</a>
+        </div>
+        <div class="box">
+            <img src="https://i.ytimg.com/vi/U7nmRSqxhsE/maxresdefault.jpg" alt="Vega X Exploit">
+            <h3>Vega X</h3>
+            <p>Vega X is a level 5 93% UNC Android exploit.</p>
+            <a href="#" class="btn">Get Exploit</a>
+        </div>
+        <div class="box">
+            <img src="https://i.ytimg.com/vi/41djYQ5R9jY/maxresdefault.jpg" alt="Delta Exploit">
+            <h3>Delta</h3>
+            <p>Delta is a FE level 7 100% UNC exploit.</p>
+            <a href="#" class="btn">Get Exploit</a>
+        </div>
+        <div class="box">
+            <img src="https://i.ytimg.com/vi/YmjtwUh7IHE/maxresdefault.jpg" alt="MacSploit Exploit">
+            <h3>MacSploit</h3>
+            <p>MacSploit is a level 6 87% UNC MacOS exploit.</p>
+            <a href="#" class="btn">Get Exploit</a>
+        </div>
+        <div class="box">
+            <img src="https://i.ytimg.com/vi/R3MJjZxkYOM/maxresdefault.jpg" alt="Hydrogen Mac Exploit">
+            <h3>Hydrogen Mac</h3>
+            <p>Hydrogen Mac is a level 6 91% UNC MacOS exploit.</p>
+            <a href="#" class="btn">Get Exploit</a>
+        </div>
+        <div class="box">
+            <img src="https://i.ytimg.com/vi/LZbPfT7Kstc/maxresdefault.jpg" alt="Cubix Exploit">
+            <h3>Cubix</h3>
+            <p>Cubix is a level 7 100% UNC iOS exploit.</p>
+            <a href="#" class="btn">Get Exploit</a>
+        </div>
+        <div class="lazy-label">Made with 💖 by ninja.</div>
+    </div>
 
-        <div class="lazy-label">
-            More soon. We're Lazy. Join the Discord for more exploits.
+    <!-- Studio Section -->
+    <div id="studio" class="tabs">
+        <div class="line"></div>
+        <div class="studio-container">
+            <div class="ai-sidebar">
+                <div class="ai-message">
+                    <img src="https://th.bing.com/th/id/R.3b48b9c5a3c8c85ef05a019df9db3b24?rik=HWUCouChpA3kFA&riu=http%3a%2f%2fclipart-library.com%2fimages_k%2fninja-transparent%2fninja-transparent-2.png&ehk=OYTW2pIULxLyVqtVa%2fKpojLLGLNfK7nOWp6JRzmAUMo%3d&risl=&pid=ImgRaw&r=0" alt="Ninja AI">
+                    <strong>Ninja AI:</strong> Hello! How can I help you today? Roblox exploiting, making executors, scripts, anything! :)
+                </div>
+                <div class="send-container">
+                    <input type="text" placeholder="Type your message here...">
+                    <button>Send</button>
+                </div>
+            </div>
+            <div class="code-area">
+                <textarea class="avalon-textbox" placeholder="Type your C# or Lua code here..."></textarea>
+                <button class="btn" style="margin-top: 10px; background-color: #ff4d4d;">Play</button>
+            </div>
         </div>
     </div>
-</div>
-
-<!-- Payment Modal -->
-<div id="paymentModal">
-    <button id="closePayment">Close</button>
-    <h2>Ninja Payment</h2>
-
-    <div class="payment-options">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/640px-PayPal.svg.png" alt="PayPal">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Cash_App_logo.svg" alt="CashApp">
-    </div>
-
-    <div class="payment-description">
-        Choose your payment method:
-    </div>
-
-    <button id="purchaseBtn">Purchase</button>
 </div>
 
 <script>
-    function showTab(tabId) {
-        document.querySelectorAll('.tabs').forEach(tab => tab.classList.remove('active-tab'));
-        document.getElementById(tabId).classList.add('active-tab');
+    function showTab(tabName) {
+        // Hide all tabs
+        const tabs = document.querySelectorAll('.tabs');
+        tabs.forEach(tab => tab.classList.remove('active-tab'));
+
+        // Show the selected tab
+        document.getElementById(tabName).classList.add('active-tab');
     }
-
-    function openPayment() {
-        const paymentModal = document.getElementById('paymentModal');
-        paymentModal.style.display = 'block';
-        dragElement(paymentModal);
-    }
-
-    function dragElement(element) {
-        let posX = 0, posY = 0, mouseX = 0, mouseY = 0;
-        
-        element.onmousedown = function (event) {
-            event.preventDefault();
-            mouseX = event.clientX;
-            mouseY = event.clientY;
-
-            document.onmousemove = function (event) {
-                event.preventDefault();
-                posX = mouseX - event.clientX;
-                posY = mouseY - event.clientY;
-                mouseX = event.clientX;
-                mouseY = event.clientY;
-
-                element.style.top = (element.offsetTop - posY) + "px";
-                element.style.left = (element.offsetLeft - posX) + "px";
-            };
-
-            document.onmouseup = function () {
-                document.onmousemove = null;
-                document.onmouseup = null;
-            };
-        };
-    }
-
-    document.getElementById('closePayment').onclick = function() {
-        document.getElementById('paymentModal').style.display = 'none';
-    };
 </script>
 
 </body>
