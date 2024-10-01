@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Exploits</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+        }
+        header h1 {
+            font-size: 24px;
+            color: white;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .tabs {
+            display: none;
+        }
+        .active-tab {
+            display: block;
+        }
+        .line {
+            border-bottom: 2px solid white;
+            margin-bottom: 20px;
+        }
+        .box {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 300px;
+            margin-right: 20px;
+        }
+        .box img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .box h3 {
+            margin-top: 10px;
+        }
+        .btn {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        .lazy-label {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            padding: 10px;
+        }
+        /* Draggable Payment GUI */
+        #paymentModal {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #444;
+            border-radius: 10px;
+            padding: 20px;
+            color: white;
+            width: 450px;
+            height: 500px; /* Increased the height */
+            cursor: move;
+        }
+        #paymentModal h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #closePayment {
+            color: white;
+            background-color: #ff4d4d;
+            padding: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            float: right;
+        }
+        .payment-options {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+        .payment-options img {
+            width: 80px;
+            height: 80px;
+        }
+        #purchaseBtn {
+            background-color: #28a745;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            font-size: 16px;
+            text-align: center;
+        }
+        .payment-description {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Ninja Exploits</h1>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showTab('exploits')">Exploits</a></li>
+            <li><a href="https://discord.gg/nn9r4TBwaT" target="_blank">Discord</a></li>
+            <li><a href="#" onclick="openPayment()">Payments</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="content">
+    <!-- Exploits Section -->
+    <div id="exploits" class="tabs active-tab">
+        <div class="line"></div>
+        <div class="box">
+            <img src="https://i.ytimg.com/vi/mQo_DsvgqFQ/maxresdefault.jpg" alt="Wave Executor">
+            <h3>Wave</h3>
+            <p>Wave is a level 8 100% UNC executor.</p>
+            <a href="https://rekonise.com/get-wave-ydy87" target="_blank" class="btn">Get Exploit</a> <!-- Updated Button -->
+        </div>
+
+        <div class="box">
+            <img src="https://th.bing.com/th/id/OIP.mfLAoSh9o6mIekNJzqif1QHaEK?rs=1&pid=ImgDetMain" alt="Solara Exploit">
+            <h3>Solara</h3>
+            <p>Solara is a level 3 67% UNC exploit.</p>
+            <a href="https://rekonise.com/get-solara-53qua" target="_blank" class="btn">Get Exploit</a> <!-- Solara Button -->
+        </div>
+
+        <div class="box">
+            <img src="https://i.ytimg.com/vi/9PQKaAZfsQM/maxresdefault.jpg" alt="Celery Exploit">
+            <h3>Celery</h3>
+            <p>Celery is a level 3 74% UNC exploit.</p>
+            <a href="https://rekonise.com/get-celery-zbe7h" target="_blank" class="btn">Get Exploit</a> <!-- Celery Button -->
+        </div>
+
+        <div class="lazy-label">
+            More soon. We're Lazy. Join the Discord for more exploits.
+        </div>
+    </div>
+</div>
+
+<!-- Payment Modal -->
+<div id="paymentModal">
+    <button id="closePayment">Close</button>
+    <h2>Ninja Payment</h2>
+
+    <div class="payment-options">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/640px-PayPal.svg.png" alt="PayPal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Cash_App_logo.svg" alt="CashApp">
+    </div>
+
+    <div class="payment-description">
+        Choose your payment method:
+    </div>
+
+    <button id="purchaseBtn">Purchase</button>
+</div>
+
+<script>
+    function showTab(tabId) {
+        document.querySelectorAll('.tabs').forEach(tab => tab.classList.remove('active-tab'));
+        document.getElementById(tabId).classList.add('active-tab');
+    }
+
+    function openPayment() {
+        const paymentModal = document.getElementById('paymentModal');
+        paymentModal.style.display = 'block';
+        dragElement(paymentModal);
+    }
+
+    function dragElement(element) {
+        let posX = 0, posY = 0, mouseX = 0, mouseY = 0;
+        
+        element.onmousedown = function (event) {
+            event.preventDefault();
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+
+            document.onmousemove = function (event) {
+                event.preventDefault();
+                posX = mouseX - event.clientX;
+                posY = mouseY - event.clientY;
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+
+                element.style.top = (element.offsetTop - posY) + "px";
+                element.style.left = (element.offsetLeft - posX) + "px";
+            };
+
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            };
+        };
+    }
+
+    document.getElementById('closePayment').onclick = function() {
+        document.getElementById('paymentModal').style.display = 'none';
+    };
+</script>
+
+</body>
+</html>
